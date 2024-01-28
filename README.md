@@ -33,3 +33,17 @@ Features:
 
 After installing stock Raspbian, copy the deploy directory to the SD card boot partition and refer to the installation instructions in deploy/README.md.
 
+
+## Acknowledgments
+
+The following references were helpful in figuring out how to make composite USB gadgets in Linux using the libcomposite kernel module and configfs.
+
+[USB On-The-Go (OTG)](https://trac.gateworks.com/wiki/linux/OTG)
+[Belcarra/gadgetconfig](https://github.com/Belcarra/gadgetconfig)
+[Linux Kernel Documentation - Linux USB gadget configured through configfs](https://www.kernel.org/doc/html/latest/usb/gadget_configfs.html)
+[Composite USB Gadgets on the Raspberry Pi Zero](https://www.isticktoit.net/?p=1383)
+[ckuethe/usbarmory/wiki/USB-Gadgets](https://github.com/ckuethe/usbarmory/wiki/USB-Gadgets)
+[USB Ethernet Gadget - A Beginner's Guide](https://raw.githubusercontent.com/thagrol/Guides/main/ethernetgadget.pdf)
+
+
+

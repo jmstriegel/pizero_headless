@@ -185,7 +185,7 @@ file will contain a log of what happened during the deployment.
 
 
 
-### Running commands from the SD card
+## Running commands from the SD card
 
 You can automate a deployment task, or execute commands
 on the Pi if you can't otherwise connect to it.
@@ -202,7 +202,7 @@ Look in `/boot/deploy_complete.txt` after the reboot. It will contain any output
 from your script.
 
 
-### Resetting the user password
+## Resetting the user password
 
 To reset the user password as part of the deployment, create the `/boot/deploy/userconf.txt` file as described below, and `touch /boot/headless_deploy.txt`.
 

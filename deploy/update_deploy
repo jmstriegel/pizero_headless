@@ -1,0 +1,3 @@
+# update_deploy
+# If this file exists, the headless update script will be installed to /usr/bin/do_headless_updates
+# and will be added to /etc/rc.local to run and check for requested updates on each boot.

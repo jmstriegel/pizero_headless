@@ -1,0 +1,44 @@
+#!/bin/bash
+
+/usr/sbin/modprobe libcomposite
+
+mkdir -p /sys/kernel/config/usb_gadget/composite_gadget
+cd /sys/kernel/config/usb_gadget/composite_gadget
+echo "" > UDC
+
+echo 0x1d6b > idVendor    # Linux Foundation
+echo 0x0104 > idProduct   # Multifunction Composite Gadget
+echo 0x0100 > bcdDevice   # v1.0.0
+echo 0x0200 > bcdUSB      # USB2
+
+mkdir -p strings/0x409
+( cat /proc/cpuinfo | grep Serial | cut -d ' ' -f 2 ) > strings/0x409/serialnumber
+echo "Unknown" > strings/0x409/manufacturer
+echo "Composite USB Gadget" > strings/0x409/product
+
+
+DEV="usb0"
+
+# Ethernet (EEM)
+mkdir -p functions/eem.$DEV
+# First MAC byte must be even (2,4,6,8,A,C,E)
+HOSTMAC="8e:67:a3:c4:27:21"  # Ethernet MAC PC Side
+SELFMAC="7e:40:24:b8:28:b1"  # Ethernet MAC Zero Side
+echo $HOSTMAC > functions/eem.usb0/host_addr
+echo $SELFMAC > functions/eem.usb0/dev_addr
+# End Ethernet
+
+
+# Serial (ACM)
+mkdir -p functions/acm.$DEV
+# End Serial
+
+
+CFG=1
+mkdir -p configs/c.$CFG/strings/0x409
+echo "Config $CFG: Ethernet" > configs/c.$CFG/strings/0x409/configuration
+echo 250 > configs/c.$CFG/MaxPower
+ln -s functions/eem.$DEV configs/c.$CFG/
+ln -s functions/acm.$DEV configs/c.$CFG/
+
+ls /sys/class/udc > UDC

@@ -1,0 +1,18 @@
+#/usr/bin/bash
+
+# You can use a script like this to run commands as root at
+# the end of the boot process. Assuming you have configured
+# wifi correctly, this can be an easy way of installing 
+# software without having to access a shell on the device.
+
+
+# Hack: give the wireless a few seconds to associate
+# before trying to download updates
+sleep 20
+
+# Update apt and install the latest version of dnsmasq
+apt-get -y update
+apt-get -y upgrade
+
+/boot/deploy/scripts/enable_usb_dhcp.sh
+

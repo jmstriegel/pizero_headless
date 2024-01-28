@@ -1,0 +1,13 @@
+# headless_usb
+# If this file is here when the headless deployment runs, the device will be configured
+# to provide serial and ethernet access over the USB cable.
+#
+# The ethernet device will be available at 10.6.6.1. You may need to manually set your
+# computer's IP address to 10.6.6.2 netmask 255.255.255.0 to be able to ssh to the 
+# device.
+#
+# Serial access will also be provided. In Linux, the device will be available at 
+# /dev/ttyACM0
+# To connect, run `screen /dev/ttyACM0 9600`
+# To exit screen, type the sequence "ctrl-A k"
+# Make sure to log out first or the user session may still be connected!
